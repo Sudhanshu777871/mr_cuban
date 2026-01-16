@@ -1,0 +1,130 @@
+.app-version-container {
+    min-height: 100vh;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Header */
+  .app-version-header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .app-version-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .app-version-header p {
+    color: #aaa;
+    font-size: 1rem;
+  }
+  
+  .app-version-header .highlight {
+    color: #4fa3ff;
+    font-weight: 500;
+  }
+  
+  /* Card */
+  .version-card {
+    background-color: #121212;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 10px 30px;
+    height: fit-content;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .version-card h2 {
+    color: #4fa3ff;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  /* Form */
+  .version-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 6px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+  }
+  
+  .form-group input::placeholder {
+    color: #777;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #4fa3ff;
+    box-shadow: 0 0 5px rgba(79, 163, 255, 0.4);
+  }
+  
+  /* Submit button */
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .form-actions button {
+    background-color: #4fa3ff;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form-actions button:hover {
+    background-color: #2b7de9;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .version-card {
+      padding: 20px;
+    }
+  
+    .app-version-header h1 {
+      font-size: 1.8rem;
+    }
+  
+    .version-card h2 {
+      font-size: 1.2rem;
+    }
+  }
+  

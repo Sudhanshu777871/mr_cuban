@@ -1,0 +1,171 @@
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  ToastAndroid,
+  View,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../../assets/color";
+import img from "../../assets/img/login.jpg";
+import AuthButton from "../../components/AuthButton";
+import { useDispatch, useSelector } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { LoadApi, UpdateUserApi } from "../../api/auth";
+
+const accout = () => {
+  const { user } = useSelector((state) => state.user);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleUpdate = async () => {
+    try {
+      setLoading(true);
+      const token = await AsyncStorage.getItem("token");
+      const result = await UpdateUserApi(name, password,user?.phone, user?._id,token);
+      if (result?.data?.data) {
+        const result1 = await LoadApi(token);
+        if (result1?.data?.data) {
+          dispatch({ type: "load", payload: result?.data?.data });
+          ToastAndroid.show("Profile Update Successfully", ToastAndroid.SHORT);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }finally{
+      setLoading(false)
+    }
+  };
+
+  useEffect(() => {
+    setPassword(user?.password);
+    setName(user?.name);
+  }, [user]);
+
+  return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "white",padding:20 }}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <View style={styles.header}>
+            <Text style={styles.h2}>Profile Page</Text>
+            <Text style={styles.p}>
+              Welcome to your profile! Here, you can manage your account
+              details, view your booking history, and update your preferences.
+            </Text>
+          </View>
+
+          <Text style={styles.h4}>Personal Details</Text>
+
+          <View style={styles.form}>
+            <Text style={styles.label}>Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholderTextColor={"#454545"}
+              value={name}
+              onChangeText={(e)=>setName(e)}
+              placeholder="Enter Your Name"
+            />
+          </View>
+          <View style={styles.form}>
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              style={styles.input}
+              placeholderTextColor={"#454545"}
+              value={user?.email}
+              placeholder="Enter Your Email"
+              editable={false}
+            />
+          </View>
+          <View style={styles.form}>
+            <Text style={styles.label}>Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholderTextColor={"#454545"}
+              value={password}
+              onChangeText={(e)=>setPassword(e)}
+              placeholder="Enter Your Password"
+            />
+          </View>
+          <View style={styles.form}>
+            <Text style={styles.label}>Phone Number</Text>
+            <TextInput
+              style={styles.input}
+              placeholderTextColor={"#454545"}
+              value={user?.phone}
+              placeholder="Enter Your Phone Number"
+              editable={false}
+            />
+          </View>
+          <View style={styles.form}>
+            <Text style={styles.label}>Driving Licence</Text>
+            <TextInput
+              style={styles.input}
+              placeholderTextColor={"#454545"}
+              value={user?.dl}
+              editable={false}
+            />
+          </View>
+          
+            <AuthButton loading={loading} handlePress={handleUpdate} title={"Update Profile"} />
+        
+        </ScrollView>
+      </SafeAreaView>
+  
+  );
+};
+
+export default accout;
+
+const styles = StyleSheet.create({
+  
+  h2: {
+    fontSize: 20,
+    fontWeight: "bold",
+    fontFamily: "bold",
+    color: colors.primary,
+    marginBottom: 5,
+  },
+  h4: {
+    color: "#454545",
+    fontSize: 16,
+    fontWeight: "regular",
+    fontFamily: "regular",
+    marginBottom: 15,
+    marginTop:15
+  },
+  p: {
+    color: "#454545",
+    textAlign: "justify",
+    fontSize: 14,
+    fontWeight: "regular",
+    fontFamily: "regular",
+    lineHeight: 20,
+  },
+  form: {
+  
+    marginBottom: 15,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: "regular",
+    fontFamily: "regular",
+    color: "#454545",
+    marginBottom: 5,
+  },
+  input: {
+    width: "100%",
+    padding: 10,
+    backgroundColor: "transparent",
+    borderRadius: 5,
+    color: "#454545",
+    outlineStyle: "none",
+    marginTop: 5,
+    borderWidth:1,
+    borderColor:"#e4e4e4"
+  },
+});

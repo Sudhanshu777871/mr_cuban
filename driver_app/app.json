@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "MR Cuban Partner",
+    "scheme": "driver-client",
+    "slug": "driver-client",
+    "version": "8.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gouravbajpai1212.driverclient"
+    },
+    "android": {
+      "versionCode": 8,
+      "permissions": [
+        "CAMERA"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "googleServicesFile": "./google-services.json",
+      "notification": {
+        "icon": "./assets/icon.png",
+        "color": "#FF231F7C"
+      },
+      "package": "com.gourav_bajpai1212.driverclient"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#FF231F7C"
+        }
+      ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e83c5a57-7c5e-4bdf-b06c-ce6228e4c2bd"
+      }
+    },
+    "owner": "sudhanshu_dev"
+  }
+}

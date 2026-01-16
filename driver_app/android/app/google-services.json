@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "943701988429",
+    "project_id": "mrcubanapp",
+    "storage_bucket": "mrcubanapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943701988429:android:3a39f797be17fa8ea43804",
+        "android_client_info": {
+          "package_name": "com.gourav_bajpai1212.driverclient"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsM6U_5owvkZtgb4P17rlh9l_U-QFEaoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
